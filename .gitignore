@@ -1,0 +1,5 @@
+checker_linux
+.push_swap_visualizer
+push_swap
+*.o
+*.a
