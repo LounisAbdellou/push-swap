@@ -1,6 +1,6 @@
 NAME = push_swap
 INCLUDES = ./includes/
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -Iincludes
 LIBFT = ./libft/libft.a
 
 SRCS = push_swap.c
@@ -8,9 +8,9 @@ OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
 
-$(NAME):
+$(NAME): $(OBJS)
 	@make -C libft
-	${CC} $(CFLAGS) -I $(INCLUDES) $(SRCS) -o $(NAME) $(LIBFT)
+	${CC} $(CFLAGS) $(OBJS) -o $(NAME) $(LIBFT)
 
 clean:
 	@make clean -C libft
