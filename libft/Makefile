@@ -1,13 +1,12 @@
 NAME = libft.a
 CC = cc
 AR = ar rcs
-CFLAGS = -Wall -Wextra -Werror
-INCLUDES = ../includes/
+CFLAGS = -Wall -Wextra -Werror -I ../includes
 
 SRCS = ft_nbrlen.c ft_strlen.c ft_strlcpy.c ft_strlcat.c ft_abs.c ft_isalpha.c \
 	   ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c ft_islower.c \
-	   ft_isupper.c ft_tolower.c ft_toupper.c ft_atoi.c \
-	   ft_strncmp.c ft_memcmp.c ft_itoa.c \
+	   ft_isupper.c ft_isnbr.c ft_tolower.c ft_toupper.c ft_atoi.c \
+	   ft_strcmp.c ft_strncmp.c ft_memcmp.c ft_itoa.c \
 	   ft_strndup.c ft_strnstr.c ft_strdup.c \
 	   ft_strnew.c ft_strcat.c ft_substr.c \
 	   ft_strjoin.c ft_strmapi.c ft_strchr.c ft_strrchr.c \
@@ -24,7 +23,7 @@ OBJS = $(SRCS:.c=.o)
 all: $(NAME)
 
 .c.o:
-	$(CC) $(CFLAGS) -c -I $(INCLUDES) $< -o $(<:.c=.o)
+	$(CC) $(CFLAGS) -c $< -o $(<:.c=.o)
 
 $(NAME): $(OBJS)
 	$(AR) $(NAME) $(OBJS)
