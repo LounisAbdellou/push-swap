@@ -6,7 +6,7 @@
 /*   By: labdello <labdello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 11:40:43 by labdello          #+#    #+#             */
-/*   Updated: 2024/06/14 11:45:53 by labdello         ###   ########.fr       */
+/*   Updated: 2024/06/19 18:58:23 by labdello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_isnbr(char *str)
 	i = 0;
 	while (str[i] != '\0')
 	{
-		if (str[i] == '-' && i == 0)
+		if ((str[i] == '-' || str[i] == '+') && i == 0)
 			i++;
 		if (!ft_isdigit(str[i]))
 			return (0);
@@ -27,4 +27,3 @@ int	ft_isnbr(char *str)
 	}
 	return (1);
 }
-

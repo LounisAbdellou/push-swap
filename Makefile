@@ -1,6 +1,6 @@
 NAME = push_swap
 INCLUDES = ./includes/
-CFLAGS = -Wall -Wextra -Werror -Iincludes
+CFLAGS = -Wall -Wextra -Werror -I ./includes
 LIBFT = ./libft/libft.a
 
 SRCS = push_swap.c stack_utils.c
