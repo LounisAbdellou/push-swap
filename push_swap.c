@@ -6,77 +6,72 @@
 /*   By: labdello <labdello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/09 15:24:55 by labdello          #+#    #+#             */
-/*   Updated: 2024/06/20 14:59:04 by labdello         ###   ########.fr       */
+/*   Updated: 2024/06/20 16:22:36 by labdello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "push_swap.h"
 
-char	*args_validation(char **args)
+int	args_validation(char **args)
 {
 	int		n;
 	size_t	i;
 
 	i = 0;
 	if (!args[0])
-		return ("No arguments given\n");
+		return (0);
 	while (args[i] != NULL)
 	{
 		if (!ft_isnbr(args[i]))
-			return ("Arguments must only be integers\n");
+			return (0);
 		n = ft_atoi(args[i]);
 		if (n > INT_MAX || n < INT_MIN)
-			return ("An int overflow was detected\n");
+			return (0);
 		i++;
 	}
-	return ("OK");
+	return (1);
 }
 
-char	*parse_args(char **args, t_stack *stack, int is_splited)
+int	parse_args(char **args, t_stack *stack, int is_splited)
 {
 	size_t	i;
 	t_stack	*new;
-	char	*validation_msg;
 
 	i = 0;
-	validation_msg = args_validation(args);
-	if (ft_strcmp(validation_msg, "OK") != 0)
-		return (validation_msg);
 	while (args[i] != NULL)
 	{
 		new = stk_new(ft_atoi(args[i]));
 		if (!new)
 		{
 			stk_clear(&stack);
-			return ("Arguments could not be parsed\n");
+			return (0);
 		}
 		stk_add(&stack, new);
 		i++;
 	}
 	if (is_splited)
 		free(args);
-	return ("OK");
+	return (1);
 }
 
 int	main(int ac, char **av)
 {
-	char	*parse_msg;
+	char	**args;
 	t_stack	*a_stack;
 
 	a_stack = NULL;
 	if (ac < 2)
 	{
-		ft_putstr_fd("Wrong number of arguments\n", 1);
+		ft_putstr_fd("Error\n", 1);
 		return (1);
 	}
+	args = av + 1;
 	if (ac == 2)
-		parse_msg = parse_args(ft_split(av[1], ' '), a_stack, 1);
-	else
-		parse_msg = parse_args(av + 1, a_stack, 0);
-	if (ft_strcmp(parse_msg, "OK") != 0)
+		args = ft_split(av[1], ' ');
+	if (!args_validation(args) || !parse_args(args, a_stack, 0))
 	{
-		ft_putstr_fd(parse_msg, 1);
+		ft_putstr_fd("Error\n", 1);
 		return (1);
 	}
 	return (0);
