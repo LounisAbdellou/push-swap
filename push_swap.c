@@ -6,7 +6,7 @@
 /*   By: labdello <labdello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/09 15:24:55 by labdello          #+#    #+#             */
-/*   Updated: 2024/06/20 16:22:36 by labdello         ###   ########.fr       */
+/*   Updated: 2024/06/25 16:21:52 by labdello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 int	args_validation(char **args)
 {
-	int		n;
-	size_t	i;
+	long long	n;
+	size_t		i;
 
 	i = 0;
 	if (!args[0])
@@ -25,7 +25,7 @@ int	args_validation(char **args)
 	{
 		if (!ft_isnbr(args[i]))
 			return (0);
-		n = ft_atoi(args[i]);
+		n = ft_atoll(args[i]);
 		if (n > INT_MAX || n < INT_MIN)
 			return (0);
 		i++;
