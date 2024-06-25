@@ -6,7 +6,7 @@
 /*   By: labdello <labdello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 17:42:50 by labdello          #+#    #+#             */
-/*   Updated: 2024/06/25 18:20:08 by labdello         ###   ########.fr       */
+/*   Updated: 2024/06/26 14:26:08 by labdello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ void	stk_add(t_stack **stack, t_stack *new)
 		return ;
 	}
 	(*stack)->prev = new;
-	new->index = (*stack)->index + 1;
 	new->next = *stack;
 	*stack = new;
 }

@@ -3,7 +3,7 @@ INCLUDES = ./includes/
 CFLAGS = -Wall -Wextra -Werror -I ./includes
 LIBFT = ./libft/libft.a
 
-SRCS = push_swap.c stack_utils.c
+SRCS = push_swap.c stack_utils.c push.c
 OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
