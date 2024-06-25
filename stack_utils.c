@@ -6,7 +6,7 @@
 /*   By: labdello <labdello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 17:42:50 by labdello          #+#    #+#             */
-/*   Updated: 2024/06/20 12:49:36 by labdello         ###   ########.fr       */
+/*   Updated: 2024/06/25 18:20:08 by labdello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,11 @@
 
 void	stk_indexing(t_stack *stack)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	while (stack != NULL)
 	{
-		if (stack->index == 0 && i > 0)
-			break ;
 		stack->index = i;
 		stack = stack->next;
 		i++;
@@ -45,28 +43,21 @@ t_stack	*stk_new(int value)
 t_stack	*stk_last(t_stack *stack)
 {
 	while (stack->next != NULL)
-	{
-		if (stack->next->index == 0)
-			break ;
 		stack = stack->next;
-	}
 	return (stack);
 }
 
 void	stk_add(t_stack **stack, t_stack *new)
 {
-	t_stack	*last_node;
-
 	if (*stack == NULL)
 	{
 		*stack = new;
 		return ;
 	}
-	last_node = stk_last(*(stack));
-	last_node->next = new;
-	new->index = last_node->index + 1;
-	new->prev = last_node;
+	(*stack)->prev = new;
+	new->index = (*stack)->index + 1;
 	new->next = *stack;
+	*stack = new;
 }
 
 void	stk_clear(t_stack **stack)
