@@ -6,7 +6,7 @@
 /*   By: labdello <labdello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/09 15:24:55 by labdello          #+#    #+#             */
-/*   Updated: 2024/06/26 14:43:24 by labdello         ###   ########.fr       */
+/*   Updated: 2024/06/26 15:14:16 by labdello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,6 +117,9 @@ int	main(int ac, char **av)
 		return (1);
 	}
 	push(&a_stack, &b_stack);
+	push(&a_stack, &b_stack);
+	push(&a_stack, &b_stack);
+	swap_s(&a_stack, &b_stack);
 	ft_putstr_fd("Stack A:\n", 1);
 	ft_putstr_fd("\n", 1);
 	stk_display(a_stack);
