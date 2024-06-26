@@ -6,7 +6,7 @@
 /*   By: labdello <labdello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/09 15:24:55 by labdello          #+#    #+#             */
-/*   Updated: 2024/06/26 17:32:40 by labdello         ###   ########.fr       */
+/*   Updated: 2024/06/26 17:45:23 by labdello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,10 +113,11 @@ int	main(int ac, char **av)
 	args = av + 1;
 	if (ac == 2)
 		args = ft_split(av[1], ' ');
-	if (!args_validation(args) || !parse_args(args, &a_stack, 0))
+	if (!args_validation(args) || !parse_args(args, &a_stack, ac == 2))
 	{
 		ft_putstr_fd("Error\n", 1);
 		return (1);
 	}
+	stk_clear(&a_stack);
 	return (0);
 }
