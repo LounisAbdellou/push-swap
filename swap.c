@@ -6,7 +6,7 @@
 /*   By: labdello <labdello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 14:27:01 by labdello          #+#    #+#             */
-/*   Updated: 2024/06/26 15:03:04 by labdello         ###   ########.fr       */
+/*   Updated: 2024/06/26 16:21:33 by labdello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ void	swap(t_stack **stack)
 	tmp = *stack;
 	*stack = (*stack)->next;
 	tmp->next = (*stack)->next;
+	if (tmp->next != NULL)
+		tmp->next->prev = tmp;
 	tmp->prev = *stack;
 	(*stack)->prev = NULL;
 	(*stack)->next = tmp;

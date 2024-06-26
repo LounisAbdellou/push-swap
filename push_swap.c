@@ -6,25 +6,27 @@
 /*   By: labdello <labdello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/09 15:24:55 by labdello          #+#    #+#             */
-/*   Updated: 2024/06/26 15:14:16 by labdello         ###   ########.fr       */
+/*   Updated: 2024/06/26 17:32:40 by labdello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	stk_display(t_stack *stack)
+static void	*free_tab(char **tab)
 {
-	while (stack != NULL)
+	size_t	i;
+
+	i = 0;
+	while (tab[i] != NULL)
 	{
-		ft_putnbr_fd(stack->index, 1);
-		ft_putstr_fd(" => ", 1);
-		ft_putnbr_fd(stack->value, 1);
-		ft_putstr_fd("\n", 1);
-		stack = stack->next;
+		free(tab[i]);
+		i++;
 	}
+	free(tab);
+	return (NULL);
 }
 
-int	args_validation(char **args)
+static int	args_validation(char **args)
 {
 	long long	n;
 	size_t		i;
@@ -52,7 +54,7 @@ int	args_validation(char **args)
 	return (1);
 }
 
-void	ft_reverse_stab(char **tab)
+static void	ft_reverse_stab(char **tab)
 {
 	size_t	i;
 	size_t	j;
@@ -71,7 +73,7 @@ void	ft_reverse_stab(char **tab)
 	}
 }
 
-int	parse_args(char **args, t_stack **stack, int is_splited)
+static int	parse_args(char **args, t_stack **stack, int is_splited)
 {
 	size_t	i;
 	t_stack	*new;
@@ -91,7 +93,7 @@ int	parse_args(char **args, t_stack **stack, int is_splited)
 	}
 	stk_indexing(*(stack));
 	if (is_splited)
-		free(args); // this isnt enought need free_tab
+		free_tab(args);
 	return (1);
 }
 
@@ -116,17 +118,5 @@ int	main(int ac, char **av)
 		ft_putstr_fd("Error\n", 1);
 		return (1);
 	}
-	push(&a_stack, &b_stack);
-	push(&a_stack, &b_stack);
-	push(&a_stack, &b_stack);
-	swap_s(&a_stack, &b_stack);
-	ft_putstr_fd("Stack A:\n", 1);
-	ft_putstr_fd("\n", 1);
-	stk_display(a_stack);
-	ft_putstr_fd("\n", 1);
-	ft_putstr_fd("Stack B:\n", 1);
-	ft_putstr_fd("\n", 1);
-	stk_display(b_stack);
-	ft_putstr_fd("\n", 1);
 	return (0);
 }
