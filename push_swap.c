@@ -118,6 +118,7 @@ int	main(int ac, char **av)
 		ft_putstr_fd("Error\n", 1);
 		return (1);
 	}
+	push_swap(&a_stack, &b_stack);
 	stk_clear(&a_stack);
 	return (0);
 }

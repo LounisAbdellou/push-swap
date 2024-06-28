@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-int	stk_size(t_stack *stack)
+size_t	stk_size(t_stack *stack)
 {
 	size_t	count;
 
@@ -23,6 +23,37 @@ int	stk_size(t_stack *stack)
 		count++;
 	}
 	return (count);
+}
+
+t_stack	*stk_biggest(t_stack *stack)
+{
+	t_stack	*biggest_node;
+
+	if (!stack)
+		return (NULL);
+	biggest_node = stack;
+	while (stack != NULL)
+	{
+		if (stack->value > biggest_node->value)
+		{
+			biggest_node = stack;
+		}
+		stack = stack->next;
+	}
+	return (biggest_node);
+}
+
+int	is_stk_sorted(t_stack *stack)
+{
+	if (!stack)
+		return (1);
+	while (stack->next != NULL)
+	{
+		if (stack->value > stack->next->value)
+			return (0);
+		stack = stack->next;
+	}
+	return (1);
 }
 
 void	stk_display(t_stack *stack)
