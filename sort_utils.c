@@ -6,7 +6,7 @@
 /*   By: labdello <labdello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 14:47:22 by labdello          #+#    #+#             */
-/*   Updated: 2024/07/02 22:18:12 by labdello         ###   ########.fr       */
+/*   Updated: 2024/07/02 22:55:11 by labdello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	tiny_sort(t_stack **a_stack)
 {
 	t_stack	*biggest_node;
 
-	biggest_node = stk_biggest(*(a_stack));
+	biggest_node = stk_biggest(*a_stack);
 	if (*a_stack == biggest_node)
 		rotate(a_stack, "ra\n");
 	else if ((*a_stack)->next == biggest_node)
@@ -59,7 +59,6 @@ void	make_moves(t_stack **a_stack, t_stack **b_stack)
 	finish_moves(b_stack, cheapest, 'b');
 	finish_moves(a_stack, cheapest->target, 'a');
 	push(b_stack, a_stack, "pa\n");
-
 }
 
 void	turk_sort(t_stack **a_stack, t_stack **b_stack)

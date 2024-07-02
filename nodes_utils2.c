@@ -6,7 +6,7 @@
 /*   By: labdello <labdello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 21:00:53 by labdello          #+#    #+#             */
-/*   Updated: 2024/07/02 22:09:25 by labdello         ###   ########.fr       */
+/*   Updated: 2024/07/02 22:46:10 by labdello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ t_stack	*get_cheapest_node(t_stack *stack)
 	cheapest_node = stack;
 	while (stack != NULL)
 	{
-		if (stack->price < cheapest_node->value)
+		if (stack->price < cheapest_node->price)
 			cheapest_node = stack;
 		stack = stack->next;
 	}

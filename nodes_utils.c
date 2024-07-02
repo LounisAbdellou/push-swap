@@ -6,7 +6,7 @@
 /*   By: labdello <labdello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 14:22:30 by labdello          #+#    #+#             */
-/*   Updated: 2024/07/02 22:14:27 by labdello         ###   ########.fr       */
+/*   Updated: 2024/07/02 22:53:38 by labdello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,18 +29,22 @@ void	update_target(t_stack *a_stk, t_stack *b_stk)
 {
 	t_stack	*target;
 	t_stack	*current;
+	long	best;
 
 	while (b_stk != NULL)
 	{
-		target = b_stk;
+		best = LONG_MAX;
 		current = a_stk;
 		while (current != NULL)
 		{
-			if (current->value > b_stk->value && current->value < target->value)
+			if (current->value > b_stk->value && current->value < best)
+			{
+				best = current->value;
 				target = current;
+			}
 			current = current->next;
 		}
-		if (b_stk == target)
+		if (best == LONG_MAX)
 			b_stk->target = stk_smallest(a_stk);
 		else
 			b_stk->target = target;
