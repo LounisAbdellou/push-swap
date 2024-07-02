@@ -4,7 +4,7 @@ CFLAGS = -Wall -Wextra -Werror -I ./includes
 LIBFT = ./libft/libft.a
 
 SRCS = push_swap.c stack_utils.c stack_utils2.c push.c swap.c rotate.c \
-			 sort_utils.c
+			 sort_utils.c nodes_utils.c nodes_utils2.c
 OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)

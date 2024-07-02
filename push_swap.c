@@ -6,7 +6,7 @@
 /*   By: labdello <labdello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/09 15:24:55 by labdello          #+#    #+#             */
-/*   Updated: 2024/06/26 17:45:23 by labdello         ###   ########.fr       */
+/*   Updated: 2024/07/02 20:02:19 by labdello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ static int	parse_args(char **args, t_stack **stack, int is_splited)
 		stk_add(stack, new);
 		i++;
 	}
-	stk_indexing(*(stack));
+	update_indexes(*stack);
 	if (is_splited)
 		free_tab(args);
 	return (1);
@@ -119,6 +119,7 @@ int	main(int ac, char **av)
 		return (1);
 	}
 	push_swap(&a_stack, &b_stack);
+	stk_display(a_stack);
 	stk_clear(&a_stack);
 	return (0);
 }

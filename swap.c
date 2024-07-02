@@ -6,13 +6,13 @@
 /*   By: labdello <labdello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 14:27:01 by labdello          #+#    #+#             */
-/*   Updated: 2024/06/26 16:21:33 by labdello         ###   ########.fr       */
+/*   Updated: 2024/07/02 15:19:26 by labdello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	swap(t_stack **stack)
+void	swap(t_stack **stack, char *action)
 {
 	t_stack	*tmp;
 
@@ -26,11 +26,13 @@ void	swap(t_stack **stack)
 	tmp->prev = *stack;
 	(*stack)->prev = NULL;
 	(*stack)->next = tmp;
-	stk_indexing(*(stack));
+	if (action != NULL)
+		ft_putstr_fd(action, 1);
 }
 
 void	swap_s(t_stack **a_stack, t_stack **b_stack)
 {
-	swap(a_stack);
-	swap(b_stack);
+	swap(a_stack, NULL);
+	swap(b_stack, NULL);
+	ft_putstr_fd("ss\n", 1);
 }

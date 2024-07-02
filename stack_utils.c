@@ -6,25 +6,12 @@
 /*   By: labdello <labdello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 17:42:50 by labdello          #+#    #+#             */
-/*   Updated: 2024/06/26 14:26:08 by labdello         ###   ########.fr       */
+/*   Updated: 2024/07/02 20:55:47 by labdello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "push_swap.h"
-
-void	stk_indexing(t_stack *stack)
-{
-	size_t	i;
-
-	i = 0;
-	while (stack != NULL)
-	{
-		stack->index = i;
-		stack = stack->next;
-		i++;
-	}
-}
 
 t_stack	*stk_new(int value)
 {
@@ -44,6 +31,13 @@ t_stack	*stk_last(t_stack *stack)
 {
 	while (stack->next != NULL)
 		stack = stack->next;
+	return (stack);
+}
+
+t_stack	*stk_first(t_stack *stack)
+{
+	while (stack->prev != NULL)
+		stack = stack->prev;
 	return (stack);
 }
 

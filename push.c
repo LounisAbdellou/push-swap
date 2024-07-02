@@ -6,13 +6,13 @@
 /*   By: labdello <labdello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 18:25:20 by labdello          #+#    #+#             */
-/*   Updated: 2024/06/26 17:23:49 by labdello         ###   ########.fr       */
+/*   Updated: 2024/07/02 15:23:53 by labdello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push(t_stack **sender, t_stack **receiver)
+void	push(t_stack **sender, t_stack **receiver, char *action)
 {
 	t_stack	*tmp;
 
@@ -23,6 +23,6 @@ void	push(t_stack **sender, t_stack **receiver)
 	tmp->next = NULL;
 	tmp->prev = NULL;
 	stk_add(receiver, tmp);
-	stk_indexing(*(sender));
-	stk_indexing(*(receiver));
+	if (action != NULL)
+		ft_putstr_fd(action, 1);
 }

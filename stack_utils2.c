@@ -6,7 +6,7 @@
 /*   By: labdello <labdello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 14:53:17 by labdello          #+#    #+#             */
-/*   Updated: 2024/06/26 17:30:25 by labdello         ###   ########.fr       */
+/*   Updated: 2024/07/02 20:31:32 by labdello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,24 @@ size_t	stk_size(t_stack *stack)
 		count++;
 	}
 	return (count);
+}
+
+t_stack	*stk_smallest(t_stack *stack)
+{
+	t_stack	*smallest_node;
+
+	if (!stack)
+		return (NULL);
+	smallest_node = stack;
+	while (stack != NULL)
+	{
+		if (stack->value < smallest_node->value)
+		{
+			smallest_node = stack;
+		}
+		stack = stack->next;
+	}
+	return (smallest_node);
 }
 
 t_stack	*stk_biggest(t_stack *stack)
