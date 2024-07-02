@@ -6,7 +6,7 @@
 /*   By: labdello <labdello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/09 15:24:55 by labdello          #+#    #+#             */
-/*   Updated: 2024/07/02 22:46:01 by labdello         ###   ########.fr       */
+/*   Updated: 2024/07/02 23:32:54 by labdello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,7 @@ int	main(int ac, char **av)
 		return (1);
 	}
 	push_swap(&a_stack, &b_stack);
-	stk_display(a_stack);
+	// stk_display(a_stack);
 	stk_clear(&a_stack);
 	return (0);
 }
