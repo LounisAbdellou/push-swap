@@ -6,7 +6,7 @@
 /*   By: labdello <labdello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/09 15:24:55 by labdello          #+#    #+#             */
-/*   Updated: 2024/07/13 15:11:56 by labdello         ###   ########.fr       */
+/*   Updated: 2024/08/07 11:22:39 by labdello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,25 @@ static void	*free_tab(char **tab)
 	}
 	free(tab);
 	return (NULL);
+}
+
+static void	ft_reverse_stab(char **tab)
+{
+	size_t	i;
+	size_t	j;
+	char	*tmp;
+
+	i = 0;
+	j = 0;
+	while (tab[j] != NULL)
+		j++;
+	j -= 1;
+	while (tab[i] != NULL && i < j)
+	{
+		tmp = tab[i];
+		tab[i++] = tab[j];
+		tab[j--] = tmp;
+	}
 }
 
 static int	args_validation(char **args)
@@ -52,25 +71,6 @@ static int	args_validation(char **args)
 		i++;
 	}
 	return (1);
-}
-
-static void	ft_reverse_stab(char **tab)
-{
-	size_t	i;
-	size_t	j;
-	char	*tmp;
-
-	i = 0;
-	j = 0;
-	while (tab[j] != NULL)
-		j++;
-	j -= 1;
-	while (tab[i] != NULL && i < j)
-	{
-		tmp = tab[i];
-		tab[i++] = tab[j];
-		tab[j--] = tmp;
-	}
 }
 
 static int	parse_args(char **args, t_stack **stack, int is_splited)
@@ -115,11 +115,12 @@ int	main(int ac, char **av)
 		args = ft_split(av[1], ' ');
 	if (!args_validation(args) || !parse_args(args, &a_stack, ac == 2))
 	{
+		if (ac == 2 && args)
+			free_tab(args);
 		ft_putstr_fd("Error\n", 1);
 		return (1);
 	}
 	push_swap(&a_stack, &b_stack);
-	// stk_display(a_stack);
 	stk_clear(&a_stack);
 	return (0);
 }

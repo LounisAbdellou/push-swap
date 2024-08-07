@@ -6,7 +6,7 @@
 /*   By: labdello <labdello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 19:18:26 by labdello          #+#    #+#             */
-/*   Updated: 2024/07/02 22:07:40 by labdello         ###   ########.fr       */
+/*   Updated: 2024/08/07 11:24:38 by labdello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,7 @@ void		rotate(t_stack **stack, char *action);
 void		rotate_r(t_stack **a_stack, t_stack **b_stack);
 void		reverse_rotate(t_stack **stack, char *action);
 void		reverse_rotate_r(t_stack **a_stack, t_stack **b_stack);
+void		rotate_both(t_stack **a, t_stack **b, t_stack *cheapest);
+void		reverse_rotate_both(t_stack **a, t_stack **b, t_stack *cheapest);
 
 #endif

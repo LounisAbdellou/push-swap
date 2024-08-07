@@ -6,28 +6,12 @@
 /*   By: labdello <labdello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 14:47:22 by labdello          #+#    #+#             */
-/*   Updated: 2024/07/02 23:30:18 by labdello         ###   ########.fr       */
+/*   Updated: 2024/08/07 11:23:32 by labdello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "push_swap.h"
-
-void	rotate_both(t_stack **a, t_stack **b, t_stack *cheapest)
-{
-	while (*a != cheapest->target && *b != cheapest)
-		rotate_r(a, b);
-	update_indexes(*a);
-	update_indexes(*b);
-}
-
-void	reverse_rotate_both(t_stack **a, t_stack **b, t_stack *cheapest)
-{
-	while (*a != cheapest->target && *b != cheapest)
-		reverse_rotate_r(a, b);
-	update_indexes(*a);
-	update_indexes(*b);
-}
 
 void	tiny_sort(t_stack **a_stack)
 {
