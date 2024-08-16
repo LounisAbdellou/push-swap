@@ -6,7 +6,7 @@
 /*   By: labdello <labdello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 19:18:26 by labdello          #+#    #+#             */
-/*   Updated: 2024/08/07 11:24:38 by labdello         ###   ########.fr       */
+/*   Updated: 2024/08/16 10:16:45 by labdello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ t_stack		*stk_biggest(t_stack *stack);
 t_stack		*stk_smallest(t_stack *stack);
 t_stack		*get_cheapest_node(t_stack *stack);
 size_t		stk_size(t_stack *stack);
+size_t		get_word_count(char *str, char c);
 void		stk_display(t_stack *stack);
 void		stk_clear(t_stack **stack);
 void		stk_add(t_stack **stack, t_stack *new);

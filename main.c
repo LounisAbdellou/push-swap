@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: labdello <labdello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/09 15:24:55 by labdello          #+#    #+#             */
-/*   Updated: 2024/08/07 11:22:39 by labdello         ###   ########.fr       */
+/*   Updated: 2024/08/16 10:22:59 by labdello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,20 +102,22 @@ int	main(int ac, char **av)
 	char	**args;
 	t_stack	*a_stack;
 	t_stack	*b_stack;
+	int		should_split;
 
 	a_stack = NULL;
 	b_stack = NULL;
+	should_split = ac == 2 && get_word_count(av[1], ' ') > 1;
 	if (ac < 2)
 	{
 		ft_putstr_fd("Error\n", 1);
 		return (1);
 	}
 	args = av + 1;
-	if (ac == 2)
+	if (should_split)
 		args = ft_split(av[1], ' ');
-	if (!args_validation(args) || !parse_args(args, &a_stack, ac == 2))
+	if (!args_validation(args) || !parse_args(args, &a_stack, should_split))
 	{
-		if (ac == 2 && args)
+		if (should_split && args)
 			free_tab(args);
 		ft_putstr_fd("Error\n", 1);
 		return (1);
